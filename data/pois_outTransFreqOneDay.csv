@@ -1,100 +1,100 @@
-name,id,lat,long,outTransFrequency
-Acquarena,1,46.7192275,11.6572294,677
-Antiquarium Sebatum,4,46.783028753731614,11.902474261899073,6
-Archeoparc,5,46.721839700000004,10.860789599999999,21
-Archeoparc Villanders,6,46.631871893698026,11.540870035806586,0
-Augustiner Chorherrenstift Neustift,7,46.74094275,11.651894043399755,1209
-BunkerMooseum,9,46.8307549,11.1694596,4
-Burg Hocheppan,10,46.4925375,11.2422954,0
-Churburg,11,46.6635393,10.588729774639699,0
-Diözesanmuseum Hofburg Brixen,13,46.7147023,11.6556498,1619
-Dokumentationszentrum Culten,14,46.549876899999994,11.0085621,0
-Dolomythos,15,46.733219535334044,12.279788250803273,0
-Domschatzkammer Bozen,16,46.497684190485295,11.35389156983986,4
-Dorfmuseum Gufidaun,17,46.648397820251816,11.601917998678045,0
-Dorfmuseum Tramin,18,46.34139329999999,11.2401031,4
-Eisenbahnwelt,19,46.6693804,11.0593594,17
-Eishalle Brixen,20,46.7059813,11.651572199999999,10
-Erlebnis Kränzelhof,21,46.6271314,11.1472434,0
-Erlebniswelt Capriz,22,46.8156162589124,11.737882385187724,0
-Festung Franzensfeste,23,46.7940346,11.6070764,599
-Feuerwehrhelmmuseum,24,46.8417185,11.9440895,0
-Frauenmuseum,25,46.67296929017563,11.158965742856443,19
-Freibad Mühlbach,26,46.793223499999996,11.6678379,0
-Freischwimmbad Feldthurns,27,46.6630154,11.5985362,0
-Freischwimmbad Klausen,28,46.6466021,11.5779599,0
-Fremdenverkehrsmuseum Hochpustertal,29,46.7382542,12.167641,0
-Gampen Bunker,30,46.529593799999994,11.111905,0
-Geomuseum Radein,31,46.34689764182887,11.396798600521931,3
-Gitschberg Meransen,35,46.82249178021871,11.665001313297653,0
-Imkereimuseum Plattner-Bienenhof,37,46.525074700000005,11.4277201,22
-Jaufenburg,38,46.8017003,11.238905099999998,0
-Jochtal,41,46.842407,11.627124,0
-K.u.k. Museum Bad Egart,42,46.672940000000004,11.082018699999999,18
-Pfannenspitze,43,46.691322148611434,11.745305323526795,5731
-Kloster St. Johann in Müstair,44,46.62963010000001,10.448661,0
-Krippenmuseum Maranatha,45,46.95183270487274,11.919201111627507,45
-kunst Meran,46,46.6715742,11.1623024,4
-Kuratorium des Stiftes Innichen,47,46.733188369368385,12.282819235196085,0
-Landesfürstliche Burg,49,46.6728533,11.162173699999999,15
-Landwirtschafts-museum Brunnenburg,50,46.6922631930762,11.148139396829711,3
-Lodenwelt,51,46.815605600000005,11.736919699999998,0
-Merkantilmuseum,53,46.499744352611884,11.35430918518226,28
-Messner Mountain Museum Corones,54,46.7387791,11.9583111,183
-Messner Mountain Museum Firmian,55,46.478306200000006,11.3017389,62
-Messner Mountain Museum Juval,56,46.651626799999995,10.9680134,19
-Messner Mountain Museum Ortles,57,46.5304693,10.580905699999999,0
-Messner Mountain Museum Ripa,58,46.794160999999995,11.939904400000001,89
-Mineralienmuseum Kirchler,59,46.989450119645895,11.960504287040093,0
-Mineralienmuseum Teis,60,46.6527149,11.620324400000001,93
-Minigolf Meransen,61,46.81575540551896,11.658024718458568,0
-Multscher Museum und Stadtmuseum Sterzing,63,46.890834600000005,11.4322722,6
-Museion - Museum für Moderne und Zeitgenössische Kunst,64,46.715538099999996,11.652626300000001,41
-Museum de Gherdeina,65,46.57392479999999,11.674645337460838,6
-Museum im Weißen Turm,66,46.7163815,11.65758612222222,73
-Museum Kloster Marienberg,67,46.6985798,10.5069829,0
-Museum Ladin Ciastel de Tor,68,46.680704038748,11.892846537309122,38
-Museum Ladin Ursus ladinicus,69,46.57079876483519,11.932309027512385,2
-Museum LUMEN,70,46.740515,11.959224,28
-Museum Magie des Wassers,71,48.220312400000005,12.1018374,0
-Museum Passeier - Andreas Hofer,72,46.801516229565436,11.238736190458482,2
-Museum Schloss Moos-Schulthaus,73,46.45368815000001,11.24776647394225,0
-Museum Steinegg,74,46.485742,11.455107105521678,0
-Museum Zeitreise Mensch,75,46.313930778382186,11.224531338602759,0
-Naturmuseum Südtirol,77,46.50126988074469,11.357366365592457,79
-Nesselbahn,79,46.835742464070606,11.669954072070636,0
-Palmschoß,81,46.67621564404051,11.713047745083474,1915
-Pharmaziemuseum Brixen,83,46.7166139,11.6582709,539
-Planetarium Südtirol,84,46.438674299999995,11.4753424,2
-Rohrerhaus,86,46.640046000000005,11.354006300000002,0
-Schloss Prösels,87,46.5033614,11.4990917,2
-Schloss Rodenegg,88,46.7821085,11.686005499999998,175
-Schloss Runkelstein,89,46.517469299999995,11.359037800000001,185
-Schloss Velthurns,90,46.6700207,11.6000965,282
-Schludernser Torturm,91,46.6714924,10.5539127,1
-"Schreibmaschinenmuseum ""Peter Mitterhofer""",93,46.684608600000004,11.073630999999999,0
-Schwimmbad Alpinpool,94,46.813962200000006,11.657932699999998,0
-Silberbergwerk Villanders,96,46.6539687,11.5435707,80
-Skilift Terenten,97,46.8265541,11.810707199999998,0
-St. Prokulus Museum,98,46.6528703,11.0074376,0
-Stadtmuseum Bruneck,99,46.796290500000005,11.940990800000002,0
-Stadtmuseum Klausen,100,46.63898403984187,11.564138294430485,12
-Stadtmuseum Meran,101,46.67166620764228,11.166813428814043,10
-Südtiroler Archäologiemuseum,102,46.49979545,11.349554272866651,1507
-Südtiroler Bergbaumuseum – Bergbauwelt Ridnaun Schneeberg,103,46.9286162,11.2713135,102
-Südtiroler Bergbaumuseum Kornkasten Steinhaus,104,46.995178499999994,11.980948099999999,2
-Südtiroler Bergbaumuseum Prettau,105,47.0453505,12.1203649,16
-Südtiroler Burgeninstitut - Burg Taufers,106,46.9259583,11.977367,20
-Südtiroler Burgenmuseum Trostburg,107,46.595188799999995,11.5345657,38
-Südtiroler Jagd- und Fischereimuseum - Schloss Wolfsthurn,108,46.8932602,11.348609300000001,26
-Südtiroler Landesmuseum für Kultur- und Landesgeschichte -  Schloss Tirol,109,46.69443505,11.14463220930594,10
-Südtiroler Obstbaumuseum,110,46.5982896,11.161379400000001,4
-Südtiroler Volkskundemuseum,111,46.80315445,11.954545834352901,54
-Südtiroler Weinmuseum,112,46.4127576,11.2460979,0
-Plose,114,46.6980157,11.6826829,68757
-Tauferer Torturm,115,46.66989,10.5526392,0
-Tourism_Agency_Events,116,46.7148875,11.6547867,637
-Ultner Talmuseum,117,46.5114924,10.923834300000001,0
-Vertikale Kletterzentrum Brixen,118,46.7201794,11.656904283750894,0
-Vintschger Museum,119,46.6649343,10.586373606046504,0
-Weinbaumuseum - Schloss Rametz,121,46.668730700000005,11.185228,0
+name,id,lat,long,type,tags,outTransFrequency,rank,mostSimilar
+Acquarena,1,46.7192275,11.6572294,Sportstätte,"['water', 'sport and recreation facilities', 'indoor']",677,2.0,"['Schwimmbad Alpinpool', 'Vertikale Kletterzentrum Brixen', 'Freischwimmbad Feldthurns']"
+Antiquarium Sebatum,4,46.783028753731614,11.902474261899073,Museum,"['cultural and religious institutions', 'indoor']",6,55.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Archeoparc,5,46.721839700000004,10.860789599999999,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",21,44.0,"['Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders', 'Merkantilmuseum']"
+Archeoparc Villanders,6,46.631871893698026,11.540870035806586,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",0,69.0,"['Museum Schloss Moos-Schulthaus', 'Merkantilmuseum', 'Archeoparc']"
+Augustiner Chorherrenstift Neustift,7,46.74094275,11.651894043399755,Museum,"['protected cultural heritage', 'cultural and religious institutions', 'indoor']",1209,6.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Kloster St. Johann in Müstair']"
+BunkerMooseum,9,46.8307549,11.1694596,Museum,"['cultural and religious institutions', 'indoor']",4,61.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Burg Hocheppan,10,46.4925375,11.2422954,Museum,"['protected cultural heritage', 'cultural and religious institutions', 'indoor', 'outdoor']",0,67.0,"['Churburg', 'Kloster St. Johann in Müstair', 'Südtiroler Obstbaumuseum']"
+Churburg,11,46.6635393,10.588729774639699,Museum,"['protected cultural heritage', 'cultural and religious institutions', 'indoor', 'outdoor']",0,99.0,"['Kloster St. Johann in Müstair', 'Burg Hocheppan', 'Südtiroler Obstbaumuseum']"
+Diözesanmuseum Hofburg Brixen,13,46.7147023,11.6556498,Museum,"['protected cultural heritage', 'cultural and religious institutions', 'indoor', 'outdoor']",1619,4.0,"['Churburg', 'Kloster St. Johann in Müstair', 'Burg Hocheppan']"
+Dokumentationszentrum Culten,14,46.549876899999994,11.0085621,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Dolomythos,15,46.733219535334044,12.279788250803273,Museum,"['protected natural heritage', 'cultural and religious institutions', 'indoor']",0,53.0,"['Fremdenverkehrsmuseum Hochpustertal', 'Kuratorium des Stiftes Innichen', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Domschatzkammer Bozen,16,46.497684190485295,11.35389156983986,Museum,"['cultural and religious institutions', 'indoor']",4,58.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Dorfmuseum Gufidaun,17,46.648397820251816,11.601917998678045,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Dorfmuseum Tramin,18,46.34139329999999,11.2401031,Museum,"['cultural and religious institutions', 'indoor']",4,67.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Eisenbahnwelt,19,46.6693804,11.0593594,Museum,"['cultural and religious institutions', 'indoor']",17,39.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Eishalle Brixen,20,46.7059813,11.651572199999999,Sportstätte,"['events', 'sport and recreation facilities', 'indoor']",10,31.0,"['Vertikale Kletterzentrum Brixen', 'Schwimmbad Alpinpool', 'Freischwimmbad Klausen']"
+Erlebnis Kränzelhof,21,46.6271314,11.1472434,Museum,"['flora', 'events', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",0,56.0,"['Skilift Terenten', 'Weinbaumuseum - Schloss Rametz', 'Rohrerhaus']"
+Erlebniswelt Capriz,22,46.8156162589124,11.737882385187724,Museum,"['events', 'indoor', 'food&shopping']",0,99.0,"['Lodenwelt', 'Tauferer Torturm', 'Museum Ladin Ursus ladinicus']"
+Festung Franzensfeste,23,46.7940346,11.6070764,Museum,"['events', 'cultural and religious institutions', 'indoor']",599,8.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Schloss Prösels']"
+Feuerwehrhelmmuseum,24,46.8417185,11.9440895,Museum,"['events', 'cultural and religious institutions', 'indoor']",0,61.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Schloss Prösels']"
+Frauenmuseum,25,46.67296929017563,11.158965742856443,Museum,"['cultural and religious institutions', 'indoor']",19,42.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Freibad Mühlbach,26,46.793223499999996,11.6678379,Sportstätte,"['water', 'sport and recreation facilities', 'outdoor']",0,99.0,"['Freischwimmbad Feldthurns', 'Freischwimmbad Klausen', 'Minigolf Meransen']"
+Freischwimmbad Feldthurns,27,46.6630154,11.5985362,Sportstätte,"['water', 'sport and recreation facilities', 'outdoor']",0,99.0,"['Freibad Mühlbach', 'Freischwimmbad Klausen', 'Minigolf Meransen']"
+Freischwimmbad Klausen,28,46.6466021,11.5779599,Sportstätte,"['water', 'events', 'sport and recreation facilities', 'outdoor']",0,99.0,"['Freischwimmbad Feldthurns', 'Freibad Mühlbach', 'Minigolf Meransen']"
+Fremdenverkehrsmuseum Hochpustertal,29,46.7382542,12.167641,Museum,"['protected natural heritage', 'cultural and religious institutions', 'indoor']",0,99.0,"['Museum Kloster Marienberg', 'Kuratorium des Stiftes Innichen', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Gampen Bunker,30,46.529593799999994,11.111905,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Geomuseum Radein,31,46.34689764182887,11.396798600521931,Museum,"['protected natural heritage', 'indoor', 'outdoor']",3,48.0,"['Fremdenverkehrsmuseum Hochpustertal', 'Museum Schloss Moos-Schulthaus', 'Mineralienmuseum Kirchler']"
+Gitschberg Meransen,35,46.82249178021871,11.665001313297653,Transport,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",0,99.0,"['Nesselbahn', 'Jochtal', 'Skilift Terenten']"
+Imkereimuseum Plattner-Bienenhof,37,46.525074700000005,11.4277201,Museum,"['fauna', 'cultural and religious institutions', 'outdoor', 'food&shopping']",22,27.0,"['Weinbaumuseum - Schloss Rametz', 'Archeoparc', 'Südtiroler Obstbaumuseum']"
+Jaufenburg,38,46.8017003,11.238905099999998,Museum,"['cultural and religious institutions', 'tourism paths, trails and roads', 'indoor', 'outdoor']",0,99.0,"['Rohrerhaus', 'Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders']"
+Jochtal,41,46.842407,11.627124,Transport,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",0,99.0,"['Nesselbahn', 'Gitschberg Meransen', 'Skilift Terenten']"
+K.u.k. Museum Bad Egart,42,46.672940000000004,11.082018699999999,Museum,"['cultural and religious institutions', 'indoor']",18,40.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Pfannenspitze,43,46.691322148611434,11.745305323526795,Transport,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",5731,3.0,"['Nesselbahn', 'Gitschberg Meransen', 'Jochtal']"
+Kloster St. Johann in Müstair,44,46.62963010000001,10.448661,Museum,"['protected cultural heritage', 'cultural and religious institutions', 'indoor']",0,72.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Krippenmuseum Maranatha,45,46.95183270487274,11.919201111627507,Museum,"['cultural and religious institutions', 'indoor']",45,25.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+kunst Meran,46,46.6715742,11.1623024,Museum,"['events', 'cultural and religious institutions', 'indoor']",4,51.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Feuerwehrhelmmuseum']"
+Kuratorium des Stiftes Innichen,47,46.733188369368385,12.282819235196085,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus', 'Landwirtschafts-museum Brunnenburg']"
+Landesfürstliche Burg,49,46.6728533,11.162173699999999,Museum,"['cultural and religious institutions', 'indoor']",15,34.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Landwirtschafts-museum Brunnenburg,50,46.6922631930762,11.148139396829711,Museum,"['cultural and religious institutions', 'indoor']",3,57.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Lodenwelt,51,46.815605600000005,11.736919699999998,Museum,"['events', 'indoor', 'food&shopping']",0,99.0,"['Erlebniswelt Capriz', 'Tauferer Torturm', 'Museum Ladin Ursus ladinicus']"
+Merkantilmuseum,53,46.499744352611884,11.35430918518226,Museum,"['cultural and religious institutions', 'indoor']",28,45.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Messner Mountain Museum Corones,54,46.7387791,11.9583111,Museum,"['events', 'cultural and religious institutions', 'tourism paths, trails and roads', 'indoor', 'outdoor']",183,14.0,"['Rohrerhaus', 'Jaufenburg', 'Messner Mountain Museum Ortles']"
+Messner Mountain Museum Firmian,55,46.478306200000006,11.3017389,Museum,"['events', 'cultural and religious institutions', 'indoor', 'outdoor']",62,13.0,"['Museum Ladin Ursus ladinicus', 'Messner Mountain Museum Ortles', 'Schloss Prösels']"
+Messner Mountain Museum Juval,56,46.651626799999995,10.9680134,Museum,"['events', 'cultural and religious institutions', 'tourism paths, trails and roads', 'indoor', 'outdoor']",19,41.0,"['Rohrerhaus', 'Jaufenburg', 'Messner Mountain Museum Ortles']"
+Messner Mountain Museum Ortles,57,46.5304693,10.580905699999999,Museum,"['events', 'cultural and religious institutions', 'indoor', 'outdoor']",0,59.0,"['Museum Ladin Ursus ladinicus', 'Schloss Prösels', 'Südtiroler Bergbaumuseum Prettau']"
+Messner Mountain Museum Ripa,58,46.794160999999995,11.939904400000001,Museum,"['events', 'cultural and religious institutions', 'indoor', 'outdoor']",89,12.0,"['Museum Ladin Ursus ladinicus', 'Messner Mountain Museum Ortles', 'Schloss Prösels']"
+Mineralienmuseum Kirchler,59,46.989450119645895,11.960504287040093,Museum,"['protected natural heritage', 'indoor']",0,63.0,"['Fremdenverkehrsmuseum Hochpustertal', 'Museum Kloster Marienberg', 'Kuratorium des Stiftes Innichen']"
+Mineralienmuseum Teis,60,46.6527149,11.620324400000001,Museum,"['protected natural heritage', 'events', 'indoor']",93,18.0,"['Erlebniswelt Capriz', 'Lodenwelt', 'Mineralienmuseum Kirchler']"
+Minigolf Meransen,61,46.81575540551896,11.658024718458568,Sportstätte,"['sport and recreation facilities', 'outdoor']",0,99.0,"['Freischwimmbad Feldthurns', 'Freibad Mühlbach', 'Freischwimmbad Klausen']"
+Multscher Museum und Stadtmuseum Sterzing,63,46.890834600000005,11.4322722,Museum,"['cultural and religious institutions', 'indoor']",6,36.0,"['Kuratorium des Stiftes Innichen', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Museion - Museum für Moderne und Zeitgenössische Kunst,64,46.715538099999996,11.652626300000001,Museum,"['events', 'cultural and religious institutions', 'indoor']",41,24.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Schloss Prösels']"
+Museum de Gherdeina,65,46.57392479999999,11.674645337460838,Museum,"['cultural and religious institutions', 'indoor']",6,35.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Museum im Weißen Turm,66,46.7163815,11.65758612222222,Museum,"['cultural and religious institutions', 'indoor']",73,19.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Museum Kloster Marienberg,67,46.6985798,10.5069829,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Museum Ladin Ciastel de Tor,68,46.680704038748,11.892846537309122,Museum,"['events', 'cultural and religious institutions', 'indoor']",38,34.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Schloss Prösels']"
+Museum Ladin Ursus ladinicus,69,46.57079876483519,11.932309027512385,Museum,"['events', 'cultural and religious institutions', 'indoor']",2,62.0,"['Tauferer Torturm', 'Schloss Prösels', 'kunst Meran']"
+Museum LUMEN,70,46.740515,11.959224,Museum,"['events', 'cultural and religious institutions', 'indoor']",28,28.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Schloss Prösels']"
+Museum Magie des Wassers,71,48.220312400000005,12.1018374,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Museum Passeier - Andreas Hofer,72,46.801516229565436,11.238736190458482,Museum,"['events', 'cultural and religious institutions', 'indoor', 'outdoor']",2,37.0,"['Weinbaumuseum - Schloss Rametz', 'Rohrerhaus', 'Messner Mountain Museum Ortles']"
+Museum Schloss Moos-Schulthaus,73,46.45368815000001,11.24776647394225,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",0,72.0,"['Schludernser Torturm', 'Archeoparc Villanders', 'Archeoparc']"
+Museum Steinegg,74,46.485742,11.455107105521678,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Museum Zeitreise Mensch,75,46.313930778382186,11.224531338602759,Museum,"['cultural and religious institutions', 'indoor']",0,53.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Naturmuseum Südtirol,77,46.50126988074469,11.357366365592457,Museum,"['cultural and religious institutions', 'indoor']",79,20.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Nesselbahn,79,46.835742464070606,11.669954072070636,Transport,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",0,99.0,"['Gitschberg Meransen', 'Jochtal', 'Skilift Terenten']"
+Palmschoß,81,46.67621564404051,11.713047745083474,Transport,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",1915,7.0,"['Nesselbahn', 'Gitschberg Meransen', 'Jochtal']"
+Pharmaziemuseum Brixen,83,46.7166139,11.6582709,Museum,"['cultural and religious institutions', 'indoor']",539,10.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Planetarium Südtirol,84,46.438674299999995,11.4753424,Museum,"['events', 'cultural and religious institutions', 'indoor']",2,49.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Feuerwehrhelmmuseum']"
+Rohrerhaus,86,46.640046000000005,11.354006300000002,Museum,"['events', 'cultural and religious institutions', 'tourism paths, trails and roads', 'indoor', 'outdoor']",0,99.0,"['Jaufenburg', 'Messner Mountain Museum Ortles', 'Südtiroler Bergbaumuseum Prettau']"
+Schloss Prösels,87,46.5033614,11.4990917,Museum,"['events', 'cultural and religious institutions', 'indoor']",2,54.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Feuerwehrhelmmuseum']"
+Schloss Rodenegg,88,46.7821085,11.686005499999998,Museum,"['cultural and religious institutions', 'indoor']",175,15.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Schloss Runkelstein,89,46.517469299999995,11.359037800000001,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",185,16.0,"['Museum Schloss Moos-Schulthaus', 'Schludernser Torturm', 'Archeoparc Villanders']"
+Schloss Velthurns,90,46.6700207,11.6000965,Museum,"['cultural and religious institutions', 'indoor']",282,11.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Schludernser Torturm,91,46.6714924,10.5539127,Museum,"['cultural and religious institutions', 'indoor']",1,72.0,"['Gampen Bunker', 'Schreibmaschinenmuseum ""Peter Mitterhofer""', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+"Schreibmaschinenmuseum ""Peter Mitterhofer""",93,46.684608600000004,11.073630999999999,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Gampen Bunker', 'Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Schwimmbad Alpinpool,94,46.813962200000006,11.657932699999998,Sportstätte,"['water', 'health resorts', 'sport and recreation facilities', 'indoor']",0,99.0,"['Vertikale Kletterzentrum Brixen', 'Freibad Mühlbach', 'Freischwimmbad Feldthurns']"
+Silberbergwerk Villanders,96,46.6539687,11.5435707,Museum,"['protected natural heritage', 'cultural and religious institutions', 'outdoor']",80,22.0,"['Fremdenverkehrsmuseum Hochpustertal', 'Dolomythos', 'Geomuseum Radein']"
+Skilift Terenten,97,46.8265541,11.810707199999998,Museum,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",0,99.0,"['Weinbaumuseum - Schloss Rametz', 'Lodenwelt', 'Erlebniswelt Capriz']"
+St. Prokulus Museum,98,46.6528703,11.0074376,Museum,"['cultural and religious institutions', 'indoor']",0,47.0,"['Gampen Bunker', 'Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Stadtmuseum Bruneck,99,46.796290500000005,11.940990800000002,Museum,"['cultural and religious institutions', 'indoor']",0,67.0,"['Gampen Bunker', 'Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Stadtmuseum Klausen,100,46.63898403984187,11.564138294430485,Museum,"['cultural and religious institutions', 'indoor']",12,29.0,"['Gampen Bunker', 'Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Stadtmuseum Meran,101,46.67166620764228,11.166813428814043,Museum,"['events', 'cultural and religious institutions', 'indoor']",10,43.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Feuerwehrhelmmuseum']"
+Südtiroler Archäologiemuseum,102,46.49979545,11.349554272866651,Museum,"['cultural and religious institutions', 'indoor']",1507,5.0,"['Gampen Bunker', 'Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Südtiroler Bergbaumuseum – Bergbauwelt Ridnaun Schneeberg,103,46.9286162,11.2713135,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",102,21.0,"['Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders', 'Archeoparc']"
+Südtiroler Bergbaumuseum Kornkasten Steinhaus,104,46.995178499999994,11.980948099999999,Museum,"['cultural and religious institutions', 'indoor']",2,67.0,"['Gampen Bunker', 'Schludernser Torturm', 'Landwirtschafts-museum Brunnenburg']"
+Südtiroler Bergbaumuseum Prettau,105,47.0453505,12.1203649,Museum,"['events', 'cultural and religious institutions', 'indoor', 'outdoor']",16,51.0,"['Weinbaumuseum - Schloss Rametz', 'Rohrerhaus', 'Museum Schloss Moos-Schulthaus']"
+Südtiroler Burgeninstitut - Burg Taufers,106,46.9259583,11.977367,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",20,23.0,"['Kuratorium des Stiftes Innichen', 'Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders']"
+Südtiroler Burgenmuseum Trostburg,107,46.595188799999995,11.5345657,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",38,30.0,"['Kuratorium des Stiftes Innichen', 'Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders']"
+Südtiroler Jagd- und Fischereimuseum - Schloss Wolfsthurn,108,46.8932602,11.348609300000001,Museum,"['cultural and religious institutions', 'indoor']",26,26.0,"['Gampen Bunker', 'Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus']"
+Südtiroler Landesmuseum für Kultur- und Landesgeschichte -  Schloss Tirol,109,46.69443505,11.14463220930594,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",10,32.0,"['Kuratorium des Stiftes Innichen', 'Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders']"
+Südtiroler Obstbaumuseum,110,46.5982896,11.161379400000001,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",4,38.0,"['Kuratorium des Stiftes Innichen', 'Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders']"
+Südtiroler Volkskundemuseum,111,46.80315445,11.954545834352901,Museum,"['cultural and religious institutions', 'indoor', 'outdoor']",54,17.0,"['Kuratorium des Stiftes Innichen', 'Museum Schloss Moos-Schulthaus', 'Archeoparc Villanders']"
+Südtiroler Weinmuseum,112,46.4127576,11.2460979,Museum,"['events', 'cultural and religious institutions', 'indoor']",0,47.0,"['Tauferer Torturm', 'Museum Ladin Ursus ladinicus', 'Feuerwehrhelmmuseum']"
+Plose,114,46.6980157,11.6826829,Transport,"['events', 'sport and recreation facilities', 'tourism paths, trails and roads', 'outdoor', 'food&shopping']",68757,1.0,"['Nesselbahn', 'Gitschberg Meransen', 'Jochtal']"
+Tauferer Torturm,115,46.66989,10.5526392,Museum,"['events', 'cultural and religious institutions', 'indoor']",0,69.0,"['Museum Ladin Ursus ladinicus', 'Feuerwehrhelmmuseum', 'Schloss Prösels']"
+Tourism_Agency_Events,116,46.7148875,11.6547867,Museum,"['events', 'tourism paths, trails and roads', 'indoor', 'outdoor']",637,9.0,"['Rohrerhaus', 'Jaufenburg', 'Museum Ladin Ursus ladinicus']"
+Ultner Talmuseum,117,46.5114924,10.923834300000001,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus', 'Landwirtschafts-museum Brunnenburg']"
+Vertikale Kletterzentrum Brixen,118,46.7201794,11.656904283750894,Sportstätte,"['events', 'sport and recreation facilities', 'indoor']",0,99.0,"['Schwimmbad Alpinpool', 'Freischwimmbad Klausen', 'Minigolf Meransen']"
+Vintschger Museum,119,46.6649343,10.586373606046504,Museum,"['cultural and religious institutions', 'indoor']",0,99.0,"['Schludernser Torturm', 'Südtiroler Bergbaumuseum Kornkasten Steinhaus', 'Landwirtschafts-museum Brunnenburg']"
+Weinbaumuseum - Schloss Rametz,121,46.668730700000005,11.185228,Museum,"['events', 'cultural and religious institutions', 'indoor', 'outdoor', 'food&shopping']",0,99.0,"['Erlebniswelt Capriz', 'Messner Mountain Museum Ortles', 'Südtiroler Bergbaumuseum Prettau']"

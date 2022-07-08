@@ -4,14 +4,18 @@ import pandas as pd
 
 
 def initialiseState():
-    st.session_state['filtering'] = False
-    st.session_state['standard'] = False
-    st.session_state['duration'] = 'one-day'
+    st.session_state['duration'] ='one-day'
     st.session_state['age'] = []
     st.session_state['accommodation'] = []
     st.session_state['tags'] = []
     st.session_state['seasons'] = []
 
+
+def clearState():
+    st.session_state.age = []
+    st.session_state.accommodation = []
+    st.session_state.tags = []
+    st.session_state.seasons = []
 
 def makeCombinationDf(combinations):
     combinationList = []

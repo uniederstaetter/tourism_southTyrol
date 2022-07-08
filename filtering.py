@@ -18,34 +18,35 @@ def filterOnSelection(selection, trajectories, attr):
     """
     :return: the filtered trajectories according to the passed selection criterion
     """
-    if len(selection) > 0:
-        boolean_series = trajectories.accessId.isin(selection) if attr == 'accessId' else trajectories.cardType.isin(
-            selection) if attr == 'cardType' else trajectories.distributionType.isin(
-            selection) if attr == 'distributionType' else trajectories.season.isin(selection)
-        return trajectories[boolean_series]
-    return trajectories
+    boolean_series = trajectories.accessId.isin(selection) if attr == 'accessId' else trajectories.cardType.isin(
+        selection) if attr == 'cardType' else trajectories.distributionType.isin(
+        selection) if attr == 'distributionType' else trajectories.season.isin(selection)
+    return trajectories[boolean_series]
 
 
-def checkPoiTag(listToAdd, tagList, row):
+def checkPoiTag(listToAdd, tagSelection, row):
     name = row['name']
     idPoi = row['id']
     tags = row['tags']
     tags = ast.literal_eval(tags)
     lat = row['lat']
     lon = row['long']
-    check = any(item in tagList for item in tags)
+    typePoi = row['type']
+    rank = row['rank']
+    mostSimilar = row['mostSimilar']
+    check = any(elem in tagSelection for elem in tags)
     if check:
-        listToAdd.append([name, idPoi, tags, lat, lon])
+        listToAdd.append([name, idPoi, tags, lat, lon, typePoi, rank, mostSimilar])
 
 
 def filterPOIsOnTags(tagsSelection, poiData, listToAdd):
     """
-    :return: new pois-dataframe with cols: ['name', 'id', 'tags', 'lat', 'lon'] containing only POIs that satisfy
+    :return: new pois-dataframe with cols: ['name', 'id', 'tags', 'lat', 'lon','type', 'rank', 'mostSimilar'] containing only POIs that satisfy
     the tag selection of the user.
     """
-    tagListNumbered = special.translateTagList(tagsSelection)
-    f = poiData.apply(lambda row: checkPoiTag(listToAdd, tagListNumbered, row), axis=1)
-    return pd.DataFrame(listToAdd, columns=['name', 'id', 'tags', 'lat', 'lon'])
+    #tagListNumbered = special.translateTagList(tagsSelection)
+    f = poiData.apply(lambda row: checkPoiTag(listToAdd, tagsSelection, row), axis=1)
+    return pd.DataFrame(listToAdd, columns=['name', 'id', 'tags', 'lat', 'long', 'type', 'rank', 'mostSimilar'])
 
 
 #######################################################
@@ -95,8 +96,7 @@ def checkOutFrequency(current_row, next_step, attractionFrequencies):
             (attractionFrequencies['name'] == current_attraction), 'outTransFrequency'] = newCounter
 
 
-
-def outFrequencyTrajectory(group,  attractionFrequencies):
+def outFrequencyTrajectory(group, attractionFrequencies):
     """
     :return: void. increments for each trajectory (group) the counter counting the outTransitionFrequency stored in attractionFrequencies
     """
@@ -110,12 +110,11 @@ def outFrequencyTrajectory(group,  attractionFrequencies):
             break
 
 
-#******************************************************
-#*                        MAIN                        *
-#******************************************************
-def filterData(age, accommodation, duration, tags, seasons):
-    trajectories = trajectories_oneDay if duration == 'one day trajectories' else trajectories_fullVist
-
+# ******************************************************
+# *                        MAIN                        *
+# ******************************************************
+def filterData(age, accommodation, tags, seasons):
+    trajectories = trajectories_oneDay if st.session_state.duration == 'one-day' else trajectories_fullVist
     ########################################################################
     #                       FILTERING ON TAGS                              #
     ########################################################################
@@ -132,13 +131,20 @@ def filterData(age, accommodation, duration, tags, seasons):
     ########################################################################
     #                     FILTERING ON ACCOMMODATION                       #
     ########################################################################
-    filteredTraj_onAccom = filterOnSelection(accommodation, filteredTraj_onAge, 'distributionType')
-
+    if not filteredTraj_onAge.empty:
+        filteredTraj_onAccom = filterOnSelection(accommodation, filteredTraj_onAge, 'distributionType')
+    else:
+        return None, None
     ########################################################################
     #                          FILTERING ON SEASONS                        #
     ########################################################################
-    trajectories_withSeasons = special.applySeasons(filteredTraj_onAccom)
-    filteredTraj_onSeasons = filterOnSelection(seasons, trajectories_withSeasons, 'season')
+    if not filteredTraj_onAccom.empty:
+        trajectories_withSeasons = special.applySeasons(filteredTraj_onAccom)
+        filteredTraj_onSeasons = filterOnSelection(seasons, trajectories_withSeasons, 'season')
+    else:
+        return None, None
+    if filteredTraj_onSeasons.empty:
+        return None, None
 
     filteredTrajectories = filteredTraj_onSeasons
     grouped = filteredTrajectories.groupby(["user_id", "traj_n"])
@@ -158,8 +164,8 @@ def filterData(age, accommodation, duration, tags, seasons):
     attractionFrequencies = pois
     attractionFrequencies['outTransFrequency'] = 0
     g = grouped.apply(lambda group: outFrequencyTrajectory(group, attractionFrequencies))
-    attractionFrequencies = attractionFrequencies[['name', 'lat', 'long', 'id', 'outTransFrequency']]
+    attractionFrequencies = attractionFrequencies[
+        ['name', 'id', 'type', 'lat', 'long',  'tags', 'rank', 'mostSimilar', 'outTransFrequency']]
     filteredAttractionFrequencies = attractionFrequencies[attractionFrequencies['outTransFrequency'] > 0]
 
     return nonZeroFilteredTransition, filteredAttractionFrequencies
-
