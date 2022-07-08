@@ -9,7 +9,7 @@ import functions as f
 import filtering as filter
 import helper as help
 
-st.set_page_config(layout="wide")  # , initial_sidebar_state="expanded")
+st.set_page_config(layout="wide",  page_title="TouristInSouthTyrol",  page_icon="img/logo.png")  # , initial_sidebar_state="expanded")
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Ranchers&family=Roboto:wght@400;700&display=swap');
