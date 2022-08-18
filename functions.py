@@ -13,19 +13,36 @@ transitions_fullVisit = pd.read_csv('data/subsetTransitions_full_visit.csv')
 def drawPointsAndLines(figure, transitionData, poiData):
     maxOutTransitionFreq = poiData['outTransFrequency'].max()
     minOutTransitionFreq = poiData['outTransFrequency'].min()
-    highestRank = int(pois_withOutTransitions_oneDay['rank'].max()) if st.session_state.duration == 'one-day' else int(pois_withOutTransitions_fullVisit['rank'].max())
-    poiInspectorList = poiData[['name', 'type', 'tags', 'rank', 'mostSimilar']].values.tolist()
+    # calculate rank
+    poiData['calculatedRank'] = poiData['outTransFrequency'].rank(method='max', ascending=False)
+    highestRank_dataset = int(poiData['calculatedRank'].max())
+
+    poiInspectorList = poiData[['name', 'type', 'tags', 'calculatedRank', 'mostSimilar', 'top3InTransitions', 'top3OutTransitions']].values.tolist()
     poiInspector = ['<b>' + poiName + '</b><br><br>' \
-                    '<b>Category: </b>' + poiType + '<br>' \
-                    '<b>Tags: </b>' + ' -- '.join([t for t in ast.literal_eval(poiTags)]) + '<br>' \
-                     '<b>Rank: </b>' + str(int(poiRank)) + '/' + str(highestRank) + '<br>' \
-                     '<b>Alternatives: </b>' + ' -- '.join([t for t in ast.literal_eval(poiAlternatives)]) + '<br>' if int(poiRank) > 10 else
+                                      '<b>Category: </b>' + poiType + '<br>' \
+                                                                      '<b>Tags: </b>' + ' -- '.join(
+        [t for t in ast.literal_eval(poiTags)]) + '<br><br>' \
+                                                  '<b>Rank: </b>' + str(int(poiRank)) + '/' + str(
+        highestRank_dataset) + '<br>' \
+                               '<b>Mostly coming from: </b>' \
+                               + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)])+'<br>'\
+                                '<b>Mostly going to: </b>' \
+                               + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)])+'<br>'\
+                               '<b>Alternatives: </b>' + ' -- '.join(
+        [t for t in ast.literal_eval(poiAlternatives)]) + '<br>' if int(poiRank) > 10 else
                     '<b>' + poiName + '</b><br><br>' \
-                     '<b>Category: </b>' + poiType + '<br>' \
-                      '<b>Tags: </b>' + ' -- '.join([t for t in ast.literal_eval(poiTags)]) + '<br>' \
-                      '<b>Rank: </b>' + str(int(poiRank)) + '<b> !!HOTSPOT ALARM!!</b><br>' \
-                      '<b>Alternatives: </b>' + ' -- '.join([t for t in ast.literal_eval(poiAlternatives)]) + '<br>' for
-                    poiName, poiType, poiTags, poiRank, poiAlternatives in poiInspectorList]
+                                      '<b>Category: </b>' + poiType + '<br>' \
+                                                                      '<b>Tags: </b>' + ' -- '.join(
+                        [t for t in ast.literal_eval(poiTags)]) + '<br><br>' \
+                                    '<b>Mostly coming from: </b>' \
+                                    + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)])+'<br>'\
+                                    '<b>Mostly going to: </b>' \
+                                    + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)])+'<br>'\
+                                    '<b>Rank: </b>' + str(
+                        int(poiRank)) + '<b> !!HOTSPOT ALARM!!</b><br>' \
+                                        '<b>Alternatives: </b>' + ' -- '.join(
+                        [t for t in ast.literal_eval(poiAlternatives)]) + '<br>' for
+                    poiName, poiType, poiTags, poiRank, poiAlternatives, poiInTrans, poiOutTrans in poiInspectorList]
 
     figure.add_trace(
         go.Scattermapbox(
@@ -34,23 +51,30 @@ def drawPointsAndLines(figure, transitionData, poiData):
             lat=list(transitionData['src_lat'].values) + list(transitionData['dest_lat'].values),
             # text=list(str(transitionData['counter'].values)),
             line=dict(color='black', width=.4),
-            opacity=.8
+            opacity=.8,
+            showlegend=False
         )
     )
     figure.add_trace(go.Scattermapbox(
+        showlegend=False,
         lat=poiData['lat'],
         lon=poiData['long'],
         hoverinfo='text',
         text=poiInspector,
         mode='markers',
         marker=go.scattermapbox.Marker(
+            showscale=True,
             size=12,
             color=poiData['outTransFrequency'],
             cmin=minOutTransitionFreq,
             cmax=maxOutTransitionFreq,
-            colorscale=[[0, "rgb(178,24,43)"], [0.01, "rgb(244,165,130)"], [0.02, "rgb(247,247,247)"],
-                        [0.05, "rgb(209,229,240)"], [0.09, "rgb(146,197,222)"],
-                        [0.5, "rgb(33,102,172)"], [1, "rgb(5,48,97)"]]
+            colorscale=[[0.0, 'rgb(240, 142, 98)'], [0.001, 'rgb(231, 109, 84)'],
+                        [0.009, 'rgb(216, 80, 83)'], [0.02, 'rgb(195, 56, 90)'],
+                        [0.05, 'rgb(168, 40, 96)'], [0.09, 'rgb(138, 29, 99)'],
+                        [0.5, 'rgb(107, 24, 93)'], [1.0, 'rgb(47, 15, 61)']],
+            colorbar=dict(
+                title='Visit Frequency'
+            )
         )
     ))
     return figure
@@ -59,7 +83,6 @@ def drawPointsAndLines(figure, transitionData, poiData):
 def addMainFigure(token):
     fig = go.Figure()
     fig.update_layout(
-        showlegend=False,
         autosize=False,
         width=1600,
         height=900,

@@ -44,7 +44,7 @@ def filterPOIsOnTags(tagsSelection, poiData, listToAdd):
     :return: new pois-dataframe with cols: ['name', 'id', 'tags', 'lat', 'lon','type', 'rank', 'mostSimilar'] containing only POIs that satisfy
     the tag selection of the user.
     """
-    #tagListNumbered = special.translateTagList(tagsSelection)
+    # tagListNumbered = special.translateTagList(tagsSelection)
     f = poiData.apply(lambda row: checkPoiTag(listToAdd, tagsSelection, row), axis=1)
     return pd.DataFrame(listToAdd, columns=['name', 'id', 'tags', 'lat', 'long', 'type', 'rank', 'mostSimilar'])
 
@@ -115,43 +115,29 @@ def outFrequencyTrajectory(group, attractionFrequencies):
 # ******************************************************
 def filterData(age, accommodation, tags, seasons):
     trajectories = trajectories_oneDay if st.session_state.duration == 'one-day' else trajectories_fullVist
-    ########################################################################
-    #                       FILTERING ON TAGS                              #
-    ########################################################################
+
+    # filtered list of POIs containing only those with specified tags - possibly all
     listToFilter = []
     filteredPOIs = filterPOIsOnTags(tags, pois, listToFilter)
     idList = filteredPOIs['id'].tolist()
-    filteredTraj_onPOIs = filterOnSelection(idList, trajectories, 'accessId')
 
-    ########################################################################
-    #                           FILTERING ON AGE                           #
-    ########################################################################
-    filteredTraj_onAge = filterOnSelection(age, filteredTraj_onPOIs, 'cardType')
+    # filter trajectories to contain only those with filtered POIs
+    filteredTrajectories = trajectories[trajectories['accessId'].isin(idList)]
 
-    ########################################################################
-    #                     FILTERING ON ACCOMMODATION                       #
-    ########################################################################
-    if not filteredTraj_onAge.empty:
-        filteredTraj_onAccom = filterOnSelection(accommodation, filteredTraj_onAge, 'distributionType')
-    else:
-        return None, None
-    ########################################################################
-    #                          FILTERING ON SEASONS                        #
-    ########################################################################
-    if not filteredTraj_onAccom.empty:
-        trajectories_withSeasons = special.applySeasons(filteredTraj_onAccom)
-        filteredTraj_onSeasons = filterOnSelection(seasons, trajectories_withSeasons, 'season')
-    else:
-        return None, None
-    if filteredTraj_onSeasons.empty:
+    # filtering trajectories according to user selection
+    filtering = filteredTrajectories[(filteredTrajectories['season'].isin(seasons)) &
+                                     (filteredTrajectories['cardType'].isin(age)) &
+                                     (filteredTrajectories['distributionType'].isin(accommodation))]
+    if filtering.empty:
         return None, None
 
-    filteredTrajectories = filteredTraj_onSeasons
-    grouped = filteredTrajectories.groupby(["user_id", "traj_n"])
-    combinations = (list(tup) for tup in product(pois['name'], pois['name']))
-    comb_attr = h.makeCombinationDf(combinations)
-    g = grouped.apply(lambda group: transitionFrequencyTrajectory(group, comb_attr))
-    not_zero_transitions = comb_attr[comb_attr['counter'] > 0]
+    # all possible combinations of filtered POIs
+    combinations = (list(tup) for tup in product(filteredPOIs['name'], filteredPOIs['name']))
+    comb_attr_filtered = h.makeCombinationDf(combinations)
+
+    grouped = filtering.groupby(["user_id", "traj_n"])
+    g = grouped.apply(lambda group: transitionFrequencyTrajectory(group, comb_attr_filtered))
+    not_zero_transitions = comb_attr_filtered[comb_attr_filtered['counter'] > 0]
     if not_zero_transitions.empty:
         return None, None
 
@@ -165,7 +151,8 @@ def filterData(age, accommodation, tags, seasons):
     attractionFrequencies['outTransFrequency'] = 0
     g = grouped.apply(lambda group: outFrequencyTrajectory(group, attractionFrequencies))
     attractionFrequencies = attractionFrequencies[
-        ['name', 'id', 'type', 'lat', 'long',  'tags', 'rank', 'mostSimilar', 'outTransFrequency']]
+        ['name', 'id', 'type', 'lat', 'long', 'tags', 'rank', 'mostSimilar', 'outTransFrequency', 'top3InTransitions',
+         'top3OutTransitions']]
     filteredAttractionFrequencies = attractionFrequencies[attractionFrequencies['outTransFrequency'] > 0]
 
     return nonZeroFilteredTransition, filteredAttractionFrequencies
