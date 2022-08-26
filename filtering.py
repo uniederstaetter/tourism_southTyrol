@@ -4,39 +4,40 @@ import helper as h
 import specialFunc as special
 import ast
 import streamlit as st
+from collections import Counter
+import pickle
 
 trajectories_oneDay = pd.read_csv('data/trajectories_types_one_day.csv')
 trajectories_fullVist = pd.read_csv('data/trajectories_types_full_visit.csv')
 pois = pd.read_csv('data/accessPoints_lat_lon.csv')
+pois_full = pd.read_csv('data/accessPoints_lat_lon_full.csv')
+pois_one = pd.read_csv('data/accessPoints_lat_lon_one.csv')
+file_to_read = open("data/trajectories_dictionary.pkl", "rb")
+trajectories_dictionary = pickle.load(file_to_read)
+file_to_read_2 = open("data/trajectories_dictionary_full.pkl", "rb")
+trajectories_dictionary_full = pickle.load(file_to_read_2)
+lookUpPois_oneDay = pd.read_csv('data/pois_outTransFreqOneDay.csv')
+lookUpPois_fullVisit = pd.read_csv('data/pois_outTransFreqFullVisit.csv')
+lookUpTransitions_oneDay = pd.read_csv('data/lookUpTransitions_oneDay.csv')
+lookUpTransitions_full = pd.read_csv('data/lookUpTransitions_fullVisit.csv')
 
 
-#######################################################
-#                      FILTERING                      #
-#######################################################
-
-def filterOnSelection(selection, trajectories, attr):
-    """
-    :return: the filtered trajectories according to the passed selection criterion
-    """
-    boolean_series = trajectories.accessId.isin(selection) if attr == 'accessId' else trajectories.cardType.isin(
-        selection) if attr == 'cardType' else trajectories.distributionType.isin(
-        selection) if attr == 'distributionType' else trajectories.season.isin(selection)
-    return trajectories[boolean_series]
-
-
-def checkPoiTag(listToAdd, tagSelection, row):
+def checkPoiTag(listToAdd, tagList, row):
     name = row['name']
     idPoi = row['id']
-    tags = row['tags']
-    tags = ast.literal_eval(tags)
+    tags_first = row['tags']
+    tags = ast.literal_eval(tags_first)
     lat = row['lat']
     lon = row['long']
-    typePoi = row['type']
-    rank = row['rank']
     mostSimilar = row['mostSimilar']
-    check = any(elem in tagSelection for elem in tags)
+    type = row['type']
+    top3InTransitions = row['top3InTransitions']
+    top3OutTransitions = row['top3OutTransitions']
+    outTransFrequency = row['outTransFrequency']
+    check = any(item in tagList for item in tags)
     if check:
-        listToAdd.append([name, idPoi, tags, lat, lon, typePoi, rank, mostSimilar])
+        listToAdd.append(
+            [name, idPoi, lat, lon, type, tags_first, mostSimilar, top3InTransitions, top3OutTransitions, outTransFrequency])
 
 
 def filterPOIsOnTags(tagsSelection, poiData, listToAdd):
@@ -44,115 +45,63 @@ def filterPOIsOnTags(tagsSelection, poiData, listToAdd):
     :return: new pois-dataframe with cols: ['name', 'id', 'tags', 'lat', 'lon','type', 'rank', 'mostSimilar'] containing only POIs that satisfy
     the tag selection of the user.
     """
-    # tagListNumbered = special.translateTagList(tagsSelection)
+    #tagListNumbered = special.translateTagList(tagsSelection)
     f = poiData.apply(lambda row: checkPoiTag(listToAdd, tagsSelection, row), axis=1)
-    return pd.DataFrame(listToAdd, columns=['name', 'id', 'tags', 'lat', 'long', 'type', 'rank', 'mostSimilar'])
-
-
-#######################################################
-#                     FREQUENCIES                     #
-#######################################################
-
-def checkTransitionFrequency(current_row, prev_attraction, prev_step, combinationAttr):
-    current_step = current_row['step']
-    currentAccessId = current_row['accessId']
-    current_attraction = pois.loc[pois['id'] == currentAccessId, 'name'].item()
-    if prev_step == current_step - 1:  # current step is direct successor step
-        counter = combinationAttr.loc[(combinationAttr['source_attraction'] == prev_attraction) & (
-                combinationAttr['dest_attraction'] == current_attraction), 'counter']
-        newCounter = counter + 1
-        combinationAttr.loc[(combinationAttr['source_attraction'] == prev_attraction) & (
-                combinationAttr['dest_attraction'] == current_attraction), 'counter'] = newCounter
-
-
-def transitionFrequencyTrajectory(group, combinationAttr):
-    """
-    :return: void. Increments the counter of transitions of the combination dataframe using the trajectory passed as group.
-    """
-    prev_accessId = group['accessId'].iloc[0]
-    prev_attraction = pois.loc[pois['id'] == prev_accessId, 'name'].item()
-    prev_step = group['step'].iloc[0]
-    i = 0
-    for index, row in group.iterrows():
-        checkTransitionFrequency(row, prev_attraction, prev_step, combinationAttr)
-        try:
-            prev_accessId = group['accessId'].iloc[i]
-            prev_attraction = pois.loc[pois['id'] == prev_accessId, 'name'].item()
-            prev_step = group['step'].iloc[i]
-            i += 1
-        except IndexError:
-            break
-
-
-def checkOutFrequency(current_row, next_step, attractionFrequencies):
-    current_step = current_row['step']
-    currentAccessId = current_row['accessId']
-    current_attraction = pois.loc[pois['id'] == currentAccessId, 'name'].item()
-    if next_step == current_step + 1:
-        counter = attractionFrequencies.loc[
-            (attractionFrequencies['name'] == current_attraction), 'outTransFrequency']
-        newCounter = counter + 1
-        attractionFrequencies.loc[
-            (attractionFrequencies['name'] == current_attraction), 'outTransFrequency'] = newCounter
-
-
-def outFrequencyTrajectory(group, attractionFrequencies):
-    """
-    :return: void. increments for each trajectory (group) the counter counting the outTransitionFrequency stored in attractionFrequencies
-    """
-    i = 1
-    for ix, row in group.iterrows():
-        try:
-            next_step = group['step'].iloc[i]  # try if next row exists
-            checkOutFrequency(row, next_step, attractionFrequencies)
-            i += 1
-        except IndexError:
-            break
+    return pd.DataFrame(listToAdd, columns=['name', 'id', 'lat', 'long', 'type', 'tags', 'mostSimilar',
+                                            'top3InTransitions', 'top3OutTransitions', 'outTransFrequency'])
 
 
 # ******************************************************
 # *                        MAIN                        *
 # ******************************************************
-def filterData(age, accommodation, tags, seasons):
+def filterData(age, accommodation, seasons):
     trajectories = trajectories_oneDay if st.session_state.duration == 'one-day' else trajectories_fullVist
 
-    # filtered list of POIs containing only those with specified tags - possibly all
-    listToFilter = []
-    filteredPOIs = filterPOIsOnTags(tags, pois, listToFilter)
-    idList = filteredPOIs['id'].tolist()
-
-    # filter trajectories to contain only those with filtered POIs
-    filteredTrajectories = trajectories[trajectories['accessId'].isin(idList)]
-
     # filtering trajectories according to user selection
-    filtering = filteredTrajectories[(filteredTrajectories['season'].isin(seasons)) &
-                                     (filteredTrajectories['cardType'].isin(age)) &
-                                     (filteredTrajectories['distributionType'].isin(accommodation))]
+    filtering = trajectories[(trajectories['season'].isin(seasons)) &
+                             (trajectories['cardType'].isin(age)) &
+                             (trajectories['distributionType'].isin(accommodation))]
     if filtering.empty:
         return None, None
 
-    # all possible combinations of filtered POIs
-    combinations = (list(tup) for tup in product(filteredPOIs['name'], filteredPOIs['name']))
-    comb_attr_filtered = h.makeCombinationDf(combinations)
+    # creating a list of tuples (user, traj_number) of the filtered trajectories
+    filteredTraj = filtering[['user_id', 'traj_n']].drop_duplicates()
+    filteredTraj_tuples = [tuple(x) for x in filteredTraj.values]
 
-    grouped = filtering.groupby(["user_id", "traj_n"])
-    g = grouped.apply(lambda group: transitionFrequencyTrajectory(group, comb_attr_filtered))
-    not_zero_transitions = comb_attr_filtered[comb_attr_filtered['counter'] > 0]
-    if not_zero_transitions.empty:
-        return None, None
+    # transforming it to a filtered trajectory-dictionary : key = (user, traj); value = POI-transition tuples
+    filtered_trajectory_dict = {key: trajectories_dictionary[key] for key in
+                                filteredTraj_tuples} if st.session_state.duration == 'one-day' else {
+        key: trajectories_dictionary_full[key] for key in filteredTraj_tuples}
 
-    coordsTransitionList = []
-    n = not_zero_transitions.apply(lambda row: h.findLatLonCoords(row, coordsTransitionList, pois), axis=1)
-    nonZeroFilteredTransition = pd.DataFrame(coordsTransitionList,
-                                             columns=['source_attraction', 'src_lat', 'src_lon', 'dest_attraction',
-                                                      'dest_lat', 'dest_lon', 'counter'])
+    # flatten the dictionary to contain only the POI-transition tuples and remove the self-transitions
+    tuples_list = list(filtered_trajectory_dict.values())
+    tuples_flat_list = [item for sublist in tuples_list for item in sublist]
+    cleaned_tuples = [t for t in tuples_flat_list if t[0] != t[1]]
 
-    attractionFrequencies = pois
-    attractionFrequencies['outTransFrequency'] = 0
-    g = grouped.apply(lambda group: outFrequencyTrajectory(group, attractionFrequencies))
-    attractionFrequencies = attractionFrequencies[
-        ['name', 'id', 'type', 'lat', 'long', 'tags', 'rank', 'mostSimilar', 'outTransFrequency', 'top3InTransitions',
-         'top3OutTransitions']]
-    filteredAttractionFrequencies = attractionFrequencies[attractionFrequencies['outTransFrequency'] > 0]
+    # count the transitions
+    cnt = Counter(cleaned_tuples)
 
-    return nonZeroFilteredTransition, filteredAttractionFrequencies
+    # count the OutTransitions
+    all_aids = filtering['accessId'].unique()
+    for aid in filtering['accessId'].unique():
+        outTrans = {k: v for k, v in cnt.items() if k[1] in all_aids}
+    OutTransitionFrequency = Counter(k[1] for k in outTrans.keys())
+
+    filteredAttractions = lookUpPois_oneDay if st.session_state.duration == 'one-day' else lookUpPois_fullVisit
+    filteredAttractions['outTransFrequency'] = filteredAttractions.apply(lambda row: OutTransitionFrequency[row['id']],
+                                                                         axis=1)
+
+    filteredTransitions = lookUpTransitions_oneDay if st.session_state.duration == 'one-day' else lookUpTransitions_full
+    filteredTransitions = [row for index, row in filteredTransitions.iterrows() if
+                           (row['source_id'], row['dest_id']) in cleaned_tuples]
+    filteredTransitions_df = pd.DataFrame(filteredTransitions)
+
+    return filteredTransitions_df, filteredAttractions
+
+
+def filterPOIs(tags):
+    listToFilter = []
+    return filterPOIsOnTags(tags, pois_one,
+                                    listToFilter) if st.session_state.duration == 'one-day' else filterPOIsOnTags(tags,
+                                                                                                                  pois_full,
+                                                                                                                  listToFilter)

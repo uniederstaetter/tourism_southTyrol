@@ -65,44 +65,46 @@ with st.sidebar:
     title_styled = '<p class = "title">TouristSouthTyrol</p>'
     st.markdown(title_styled, unsafe_allow_html=True)
     st.session_state.duration = st.radio("Trajectory Duration", ('one-day', 'full-visit'))
-    filtering = st.checkbox('Filter', False)
+    filtering = st.checkbox('Filter Transitions', False)
     if filtering:
         st.session_state.age = st.multiselect(
             'Age Categories', constant.AGE)
         st.session_state.accommodation = st.multiselect(
             'Accommodation Type', constant.ACCOMMODATIONS)
-        st.session_state.tags = st.multiselect(
-            'Activity Categories', constant.TAGS)
         st.session_state.seasons = st.multiselect(
             'Seasons', constant.SEASONS)
-        selectionButton = st.button('Filter')
-        resetButton = st.button('Standard view', on_click=help.clearState)
+        selectionButton = st.button('Filter Transitions')
+        resetButton = st.button('Reset Transitions', on_click=help.clearState)
+    filteringPOIs = st.checkbox('Filter POIs', False)
+    if filteringPOIs:
+        st.session_state.tags = st.multiselect(
+            'Activity Categories', constant.TAGS)
+        confirmButton = st.button('Filter POIs')
+        resetPoiFilterButton = st.button('Reset POIs', on_click=help.clearState)
 
 # building both standard maps
 mainFig_oneDay, mainFig_fullVisit = f.addMainFigure(mapbox_access_token)
 
-
 if not filtering:
-    if st.session_state.duration == 'one-day':
-        st.plotly_chart(mainFig_oneDay)
-    else:
-        st.plotly_chart(mainFig_fullVisit)
-else:
+    if not filteringPOIs:
+        if st.session_state.duration == 'one-day':
+            st.plotly_chart(mainFig_oneDay, use_container_width=True)
+        else:
+            st.plotly_chart(mainFig_fullVisit, use_container_width=True)
+if filtering:
     if selectionButton:
         age = st.session_state.age
         ageSelection = age if len(age) > 0 else constant.AGE
         accommodation = st.session_state.accommodation
         accommodationSelection = accommodation if len(accommodation) > 0 else constant.ACCOMMODATIONS
-        tags = st.session_state.tags
-        tagsSelection = tags if len(tags) > 0 else constant.TAGS
         season = st.session_state.seasons
         seasonSelection = season if len(season) > 0 else constant.SEASONS
         if len(age) == 0 and len(accommodation) == 0 and len(tags) == 0 and len(season) == 0:
             noFilterMessage = st.info('No filtering was selected.')
             if st.session_state.duration == 'one-day':
-                st.plotly_chart(mainFig_oneDay)
+                st.plotly_chart(mainFig_oneDay, use_container_width=True)
             else:
-                st.plotly_chart(mainFig_fullVisit)
+                st.plotly_chart(mainFig_fullVisit, use_container_width=True)
             for seconds in range(4):
                 time.sleep(1)
             noFilterMessage.empty()
@@ -110,15 +112,14 @@ else:
         else:
             nonZeroFilteredTransition, filteredAttractionFrequencies = filter.filterData(ageSelection,
                                                                                          accommodationSelection,
-                                                                                         tagsSelection,
                                                                                          seasonSelection)
             if nonZeroFilteredTransition is None:
                 noDataFoundMessage = st.info(
                     'No data was found for your selection. Please change your selection. Displaying now standard view')
                 if st.session_state.duration == 'one-day':
-                    st.plotly_chart(mainFig_oneDay)
+                    st.plotly_chart(mainFig_oneDay, use_container_width=True)
                 else:
-                    st.plotly_chart(mainFig_fullVisit)
+                    st.plotly_chart(mainFig_fullVisit, use_container_width=True)
                 for seconds in range(4):
                     time.sleep(1)
                 noDataFoundMessage.empty()
@@ -126,9 +127,46 @@ else:
 
                 updatedFig = f.updateFigure(mainFig_oneDay, filteredAttractionFrequencies,nonZeroFilteredTransition) if st.session_state.duration == 'one-day' else f.updateFigure(mainFig_fullVisit, filteredAttractionFrequencies,nonZeroFilteredTransition)
 
-                st.plotly_chart(updatedFig)
-    else:  # not filterButton
+                st.plotly_chart(updatedFig, use_container_width=True)
+
+    else:
         if st.session_state.duration == 'one-day':
-            st.plotly_chart(mainFig_oneDay)
+            st.plotly_chart(mainFig_oneDay, use_container_width=True)
         else:
-            st.plotly_chart(mainFig_fullVisit)
+            st.plotly_chart(mainFig_fullVisit, use_container_width=True)
+if filteringPOIs:
+    if confirmButton:
+        tags = st.session_state.tags
+        tagsSelection = tags if len(tags) > 0 else constant.TAGS
+        if len(tags) == 0:
+            noFilterMessage = st.info('No filtering was selected.')
+            if st.session_state.duration == 'one-day':
+                st.plotly_chart(mainFig_oneDay, use_container_width=True)
+            else:
+                st.plotly_chart(mainFig_fullVisit, use_container_width=True)
+            for seconds in range(4):
+                time.sleep(1)
+            noFilterMessage.empty()
+        else:
+            filteredPOIs = filter.filterPOIs(tagsSelection)
+            if filteredPOIs is None:
+                noDataFoundMessage = st.info(
+                    'No data was found for your selection. Please change your selection. Displaying now standard view')
+                if st.session_state.duration == 'one-day':
+                    st.plotly_chart(mainFig_oneDay, use_container_width=True)
+                else:
+                    st.plotly_chart(mainFig_fullVisit, use_container_width=True)
+                for seconds in range(4):
+                    time.sleep(1)
+                noDataFoundMessage.empty()
+            else:
+                updatedFigureOnPOIs = f.updateFigureOnlyPOIs(mainFig_oneDay,
+                                                             filteredPOIs) if st.session_state.duration == 'one-day' else f.updateFigureOnlyPOIs(mainFig_fullVisit, filteredPOIs)
+                st.plotly_chart(updatedFigureOnPOIs, use_container_width=True)
+    else:
+        if st.session_state.duration == 'one-day':
+            st.plotly_chart(mainFig_oneDay, use_container_width=True)
+        else:
+            st.plotly_chart(mainFig_fullVisit, use_container_width=True)
+
+

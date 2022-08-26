@@ -17,7 +17,8 @@ def drawPointsAndLines(figure, transitionData, poiData):
     poiData['calculatedRank'] = poiData['outTransFrequency'].rank(method='max', ascending=False)
     highestRank_dataset = int(poiData['calculatedRank'].max())
 
-    poiInspectorList = poiData[['name', 'type', 'tags', 'calculatedRank', 'mostSimilar', 'top3InTransitions', 'top3OutTransitions']].values.tolist()
+    poiInspectorList = poiData[['name', 'type', 'tags', 'calculatedRank', 'mostSimilar', 'top3InTransitions',
+                                'top3OutTransitions']].values.tolist()
     poiInspector = ['<b>' + poiName + '</b><br><br>' \
                                       '<b>Category: </b>' + poiType + '<br>' \
                                                                       '<b>Tags: </b>' + ' -- '.join(
@@ -25,20 +26,20 @@ def drawPointsAndLines(figure, transitionData, poiData):
                                                   '<b>Rank: </b>' + str(int(poiRank)) + '/' + str(
         highestRank_dataset) + '<br>' \
                                '<b>Mostly coming from: </b>' \
-                               + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)])+'<br>'\
-                                '<b>Mostly going to: </b>' \
-                               + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)])+'<br>'\
-                               '<b>Alternatives: </b>' + ' -- '.join(
+                    + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)]) + '<br>' \
+                                                                                                  '<b>Mostly going to: </b>' \
+                    + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)]) + '<br>' \
+                                                                                                     '<b>Alternatives: </b>' + ' -- '.join(
         [t for t in ast.literal_eval(poiAlternatives)]) + '<br>' if int(poiRank) > 10 else
                     '<b>' + poiName + '</b><br><br>' \
                                       '<b>Category: </b>' + poiType + '<br>' \
                                                                       '<b>Tags: </b>' + ' -- '.join(
                         [t for t in ast.literal_eval(poiTags)]) + '<br><br>' \
-                                    '<b>Mostly coming from: </b>' \
-                                    + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)])+'<br>'\
-                                    '<b>Mostly going to: </b>' \
-                                    + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)])+'<br>'\
-                                    '<b>Rank: </b>' + str(
+                                                                  '<b>Mostly coming from: </b>' \
+                    + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)]) + '<br>' \
+                                                                                                  '<b>Mostly going to: </b>' \
+                    + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)]) + '<br>' \
+                                                                                                     '<b>Rank: </b>' + str(
                         int(poiRank)) + '<b> !!HOTSPOT ALARM!!</b><br>' \
                                         '<b>Alternatives: </b>' + ' -- '.join(
                         [t for t in ast.literal_eval(poiAlternatives)]) + '<br>' for
@@ -80,12 +81,73 @@ def drawPointsAndLines(figure, transitionData, poiData):
     return figure
 
 
+def drawPoints(figure, poiData):
+    maxOutTransitionFreq = poiData['outTransFrequency'].max()
+    minOutTransitionFreq = poiData['outTransFrequency'].min()
+    # calculate rank
+    poiData['calculatedRank'] = poiData['outTransFrequency'].rank(method='max', ascending=False)
+    highestRank_dataset = int(poiData['calculatedRank'].max())
+
+    poiInspectorList = poiData[['name', 'type', 'tags', 'calculatedRank', 'mostSimilar', 'top3InTransitions',
+                                'top3OutTransitions']].values.tolist()
+    print(poiInspectorList)
+    poiInspector = ['<b>' + poiName + '</b><br><br>' \
+                                      '<b>Category: </b>' + poiType + '<br>' \
+                                                                      '<b>Tags: </b>' + ' -- '.join(
+        [t for t in ast.literal_eval(poiTags)]) + '<br><br>' \
+                                                  '<b>Rank: </b>' + str(int(poiRank)) + '/' + str(
+        highestRank_dataset) + '<br>' \
+                               '<b>Mostly coming from: </b>' \
+                    + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)]) + '<br>' \
+                                                                                                  '<b>Mostly going to: </b>' \
+                    + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)]) + '<br>' \
+                                                                                                     '<b>Alternatives: </b>' + ' -- '.join(
+        [t for t in ast.literal_eval(poiAlternatives)]) + '<br>' if int(poiRank) > 10 else
+                    '<b>' + poiName + '</b><br><br>' \
+                                      '<b>Category: </b>' + poiType + '<br>' \
+                                                                      '<b>Tags: </b>' + ' -- '.join(
+                        [t for t in ast.literal_eval(poiTags)]) + '<br><br>' \
+                                                                  '<b>Mostly coming from: </b>' \
+                    + '-- '.join([inTransPois for inTransPois in ast.literal_eval(poiInTrans)]) + '<br>' \
+                                                                                                  '<b>Mostly going to: </b>' \
+                    + '-- '.join([outTransPois for outTransPois in ast.literal_eval(poiOutTrans)]) + '<br>' \
+                                                                                                     '<b>Rank: </b>' + str(
+                        int(poiRank)) + '<b> !!HOTSPOT ALARM!!</b><br>' \
+                                        '<b>Alternatives: </b>' + ' -- '.join(
+                        [t for t in ast.literal_eval(poiAlternatives)]) + '<br>' for
+                    poiName, poiType, poiTags, poiRank, poiAlternatives, poiInTrans, poiOutTrans in poiInspectorList]
+
+    figure.add_trace(go.Scattermapbox(
+        showlegend=False,
+        lat=poiData['lat'],
+        lon=poiData['long'],
+        hoverinfo='text',
+        text=poiInspector,
+        mode='markers',
+        marker=go.scattermapbox.Marker(
+            showscale=True,
+            size=12,
+            color=poiData['outTransFrequency'],
+            cmin=minOutTransitionFreq,
+            cmax=maxOutTransitionFreq,
+            colorscale=[[0.0, 'rgb(240, 142, 98)'], [0.001, 'rgb(231, 109, 84)'],
+                        [0.009, 'rgb(216, 80, 83)'], [0.02, 'rgb(195, 56, 90)'],
+                        [0.05, 'rgb(168, 40, 96)'], [0.09, 'rgb(138, 29, 99)'],
+                        [0.5, 'rgb(107, 24, 93)'], [1.0, 'rgb(47, 15, 61)']],
+            colorbar=dict(
+                title='Visit Frequency'
+            )
+        )
+    ))
+    return figure
+
+
 def addMainFigure(token):
     fig = go.Figure()
     fig.update_layout(
         autosize=False,
-        width=1600,
-        height=900,
+        width=2000,
+        height=450,
         margin=dict(l=0, r=0, t=-0, b=0),
         hovermode='closest',
         mapbox=dict(
@@ -117,6 +179,18 @@ def updateFigure(fig, filteredPois, filteredTransitions):
                    text=[]),
         overwrite=True)
     return drawPointsAndLines(updatedFig, filteredTransitions, filteredPois)
+
+
+def updateFigureOnlyPOIs(fig, filteredPois):
+    updatedFig = fig.update_traces(
+        patch=dict(lat=[],
+                   lon=[],
+                   mode='none',
+                   line={},
+                   marker={},
+                   text=[]),
+        overwrite=True)
+    return drawPoints(updatedFig, filteredPois)
 
 
 def filterMap():
