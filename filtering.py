@@ -18,8 +18,8 @@ file_to_read_2 = open("data/trajectories_dictionary_full.pkl", "rb")
 trajectories_dictionary_full = pickle.load(file_to_read_2)
 lookUpPois_oneDay = pd.read_csv('data/pois_outTransFreqOneDay.csv')
 lookUpPois_fullVisit = pd.read_csv('data/pois_outTransFreqFullVisit.csv')
-lookUpTransitions_oneDay = pd.read_csv('data/lookUpTransitions_oneDay.csv')
-lookUpTransitions_full = pd.read_csv('data/lookUpTransitions_fullVisit.csv')
+lookUpTransitions_oneDay = pd.read_csv('data/lookupTransitions_oneDay.csv')
+lookUpTransitions_full = pd.read_csv('data/lookupTransitions_fullVisit.csv')
 
 
 def checkPoiTag(listToAdd, tagList, row):
